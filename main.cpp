@@ -41,8 +41,6 @@ int main(int argc, char** argv) {
     if (contents(args, "-stack"))
     {
         stackInstructionsSet = true;
-        printf("Sorry, stack not supported yet");
-        return 1;
     }
     if (contents(args, "-IO"))
     {
@@ -65,7 +63,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < filesize(path.c_str()); i++) file[i] = (char)getc(disk);
     fclose(disk);
 
-    execute(file);
+    execute(file, cellSize, stackInstructionsSet, iomemInstructionsSet);
 
     return 0;
 }
